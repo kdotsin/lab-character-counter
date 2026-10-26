@@ -5,10 +5,16 @@ export default function StatsDisplay({
   stats,
   showReadingTime = true,
 }: StatsDisplayProps) {
+  function formatTime(totalSeconds: number): string {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  }
+
   const isOutOfRange =
     stats.wordCount < MIN_WORDS || stats.wordCount > MAX_WORDS;
   return (
-    <div className="flex items-center">
+    <div className="flex items-center justify-center gap-6">
       <section className="flex flex-col justify-center items-center">
         <h2>Characters</h2>
         <span>{stats.characterCount}</span>
@@ -24,7 +30,7 @@ export default function StatsDisplay({
       {showReadingTime && (
         <section className="flex flex-col justify-center items-center">
           <h2>Reading Time</h2>
-          <span>{stats.readingTime}</span>
+          <span>{formatTime(stats.readingTime)}</span>
         </section>
       )}
     </div>
