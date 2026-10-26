@@ -1,13 +1,16 @@
 import type { CharacterCounterProps } from "../../types";
 
+export const MIN_WORDS = 25;
+export const MAX_WORDS = 100;
+
 export default function CharacterCounter({
-  minWords = 25,
-  maxWords = 100,
+  minWords = MIN_WORDS,
+  maxWords = MAX_WORDS,
   targetReadingTime,
 }: CharacterCounterProps) {
   return (
     <div className="flex flex-col items-center">
-      <p data-min={minWords} data-max={maxWords}>
+      <p>
         `Min: {minWords} | Max: {maxWords}`
       </p>
       <span>{targetReadingTime}</span>
