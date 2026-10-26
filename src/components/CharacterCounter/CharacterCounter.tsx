@@ -7,7 +7,7 @@ export default function CharacterCounter({
 }: CharacterCounterProps) {
   return (
     <div className="flex flex-col items-center">
-      <p>
+      <p data-min={minWords} data-max={maxWords}>
         `Min: {minWords} | Max: {maxWords}`
       </p>
       <span>{targetReadingTime}</span>
